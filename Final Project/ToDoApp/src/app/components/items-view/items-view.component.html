@@ -1,0 +1,7 @@
+
+<ng-container *ngFor="let item of items; let ind=index">
+    <div *ngIf="!items[ind].isComplited"> 
+        <input type="checkbox" (click)="checkItem(item.id,item.listId)" id={{item.id}}{{item.listId}} name={{item.caption}}>
+        <label for={{item.id}}{{item.listId}}>{{item.caption}}</label>
+    </div>
+</ng-container>
