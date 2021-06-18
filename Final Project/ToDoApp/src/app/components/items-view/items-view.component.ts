@@ -8,6 +8,10 @@ import { ToDoItem } from 'src/app/models/todo-item.model';
   styleUrls: ['./items-view.component.css']
 })
 export class ItemsViewComponent implements OnInit {
+  @Input()
+  listId!:string;
+  @Input()
+  isInsertable!:boolean;
   
   items:ToDoItem[] = [
     {caption:"item 1", id:0, isComplited:false, listId:0},
@@ -19,12 +23,26 @@ export class ItemsViewComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.getListItems();
   }
   
   checkItem(itemId:number ,listId:number):void {
    let item = this.items.find(item=>item.id===itemId && item.listId===listId);
     if(item !== undefined){
       this.items[this.items.indexOf(item)].isComplited=true;
+    }
+  }
+
+  getListItems(){
+    //todo: select items by listId
+  }
+
+  addNew(){
+    let newItem:ToDoItem={
+      caption:"",
+      id:0,
+      isComplited:false,
+      listId:0
     }
   }
     

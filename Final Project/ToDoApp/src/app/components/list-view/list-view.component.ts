@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToDoList } from 'src/app/models/todo-list.model';
 
 @Component({
   selector: 'app-list-view',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-view.component.css']
 })
 export class ListViewComponent implements OnInit {
+  list!: ToDoList;
 
   constructor() { }
 

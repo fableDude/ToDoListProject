@@ -5,3 +5,8 @@
         <label for={{item.id}}{{item.listId}}>{{item.caption}}</label>
     </div>
 </ng-container>
+<ng-container *ngIf="isInsertable">
+    <input type="checkbox" id="insertNew">
+    <input type="text" id="newItem">
+    <button class="newItem" onclick="addNew()">+</button>
+</ng-container>

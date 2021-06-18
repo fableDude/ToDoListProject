@@ -1,1 +1,11 @@
-<p>list-view works!</p>
+<div class="root">
+        <mat-icon style.color="{{list.color}}">{{list.icon}}</mat-icon>
+        <p>List.Description</p>
+    <div class="actions">
+        <button>New List...</button>
+        <button>Edit...</button>
+        <button>Delete</button>
+    </div>    
+    <app-items-view [listId]="list.id.toString()" [isInsertable]="true"></app-items-view>
+
+</div>

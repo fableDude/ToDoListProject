@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatIcon } from '@angular/material/icon';
+import { ToDoList } from 'src/app/models/todo-list.model';
 
 @Component({
   selector: 'app-list-edit',
@@ -35,7 +36,7 @@ export class ListEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.buildForm();
-  }
+}
 
   buildForm() : void{
     this.form=new FormGroup({
@@ -48,6 +49,14 @@ export class ListEditComponent implements OnInit {
 
   get(fieldName: string){
     return this.form.get(fieldName);
+  }
+
+  onSave(){
+    let newList : ToDoList = {
+      ...this.form.value
+    }
+    console.log(JSON.stringify(newList));
+    //ToDo:save new list to db
   }
 }
 
