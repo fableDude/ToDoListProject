@@ -25,4 +25,12 @@ export class DataService {
   getAllItems(){
     return this.http.get<ToDoItem[]>(this.url+"items").toPromise(); 
   }
+
+  addNewItem(item:ToDoItem){
+    return this.http.post<ToDoItem>(this.url+"items",item).toPromise();
+  }
+
+  addNewList(list:ToDoList){
+    return this.http.post<ToDoList>(this.url+"lists",list).toPromise();
+  }
 }

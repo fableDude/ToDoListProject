@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
 import { toUnicode } from 'punycode';
 import { ToDoItem } from 'src/app/models/todo-item.model';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-items-view',
@@ -20,7 +22,9 @@ export class ItemsViewComponent implements OnInit {
     {caption:"item 1 list 2", id:0,isComplited:false, listId:1}
   ];
 
-  constructor() { }
+  newItemControl = new FormControl("",[Validators.required]);
+
+  constructor(public service:DataService) { }
 
   ngOnInit(): void {
     this.getListItems();
@@ -33,17 +37,19 @@ export class ItemsViewComponent implements OnInit {
     }
   }
 
-  getListItems(){
-    //todo: select items by listId
+  async getListItems(){
+    let result = this.service.getListItems(this.listId);
+    this.items = await result;
   }
 
   addNew(){
     let newItem:ToDoItem={
-      caption:"",
       id:0,
       isComplited:false,
-      listId:0
+      listId:Number(this.listId),
+      caption:this.newItemControl.value
     }
+    this.service.addNewItem(newItem);
   }
     
 }

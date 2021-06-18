@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToDoList } from 'src/app/models/todo-list.model';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-list-view',
@@ -9,7 +10,7 @@ import { ToDoList } from 'src/app/models/todo-list.model';
 export class ListViewComponent implements OnInit {
   list!: ToDoList;
 
-  constructor() { }
+  constructor(public service:DataService) { }
 
   ngOnInit(): void {
   }

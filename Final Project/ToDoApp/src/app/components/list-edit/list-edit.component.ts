@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatIcon } from '@angular/material/icon';
 import { ToDoList } from 'src/app/models/todo-list.model';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-list-edit',
@@ -32,7 +33,7 @@ export class ListEditComponent implements OnInit {
   iconControl = new FormControl('',[Validators.required]);
   colorControl = new FormControl('',[Validators.required]);
 
-  constructor() { }
+  constructor(public service:DataService) { }
 
   ngOnInit(): void {
     this.buildForm();
@@ -56,7 +57,7 @@ export class ListEditComponent implements OnInit {
       ...this.form.value
     }
     console.log(JSON.stringify(newList));
-    //ToDo:save new list to db
+    this.service.addNewList(newList);
   }
 }
 

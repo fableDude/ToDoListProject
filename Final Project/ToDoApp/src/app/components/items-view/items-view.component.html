@@ -7,6 +7,6 @@
 </ng-container>
 <ng-container *ngIf="isInsertable">
     <input type="checkbox" id="insertNew">
-    <input type="text" id="newItem">
-    <button class="newItem" onclick="addNew()">+</button>
+    <input type="text" id="newItem" [formControl]="newItemControl">
+    <button class="newItem" [disabled]="newItemControl.valid" onclick="addNew()">+</button>
 </ng-container>
