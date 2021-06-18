@@ -10,20 +10,24 @@
             <textarea rows="4" formControlName="description"></textarea>
         </div>
 
-        <mat-form-field class="form-field"appearance="fill"  *ngIf="get('icon') as field">
-            <mat-select [formControl]="iconControl" name="icon" [(value)]="selectedIcon">
-                <mat-select-trigger>
-                    <mat-icon>{{selectedIcon}}</mat-icon>
-                </mat-select-trigger>
-                <mat-option *ngFor="let icon of icons" [value]="icon">
-                    <mat-icon>{{icon}}</mat-icon>
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-
-        <select class="form-field" onchange="this.className='form-field '+this.options[this.selectedIndex].className">
-            <option class="{{color}}" *ngFor="let color of colors">{{color}}</option>
-        </select>
-
+        <div class="form-field">
+            <label  for="icon">Icon</label>
+            <mat-form-field appearance="fill"  *ngIf="get('icon') as field">
+                <mat-select [formControl]="iconControl" name="icon" [(value)]="selectedIcon">
+                    <mat-select-trigger>
+                        <mat-icon>{{selectedIcon}}</mat-icon>
+                    </mat-select-trigger>
+                    <mat-option *ngFor="let icon of icons" [value]="icon">
+                        <mat-icon>{{icon}}</mat-icon>
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="form-field">
+            <label  for="color">Color</label>
+            <select class="{{colors[0]}}" onchange="this.className='form-field '+this.options[this.selectedIndex].className">
+                <option class="{{color}}" *ngFor="let color of colors">{{color}}</option>
+            </select>
+        </div>
     </div>
 </form>

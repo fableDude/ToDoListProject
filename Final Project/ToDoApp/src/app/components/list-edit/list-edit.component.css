@@ -2,9 +2,13 @@
     display: flex;
     flex-direction: column;
     width: 400px;
+    background-color: rgb(138, 171, 190);
+    border-radius: 6px;
+    padding: 5px;
 }
 
 .form-field{
+    width: 372px;
     display: flex;
     flex-direction: column;
     margin: 10px;
@@ -13,6 +17,7 @@
 
 label{
     font-size: 12px;
+    
 }
 
 input, textarea{
@@ -25,15 +30,18 @@ input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched{
 
 mat-form-field{
     border: 1px solid grey;
-}
-
-mat-label{
-    color: black;
+    background-color: white;
+    
 }
 
 mat-option{
     color: black;
     background-color: white;
+}
+
+select, option{
+    font-weight: bold;
+    font-size: 20px;
 }
 
 :host /deep/ .mat-select-value-text {
