@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-list-edit',
@@ -7,9 +9,47 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListEditComponent implements OnInit {
 
+  form!: FormGroup;
+  icons: string[] =[
+    "event",
+    "work",
+    "shopping_cart",
+    "stars",
+    "flag"
+  ];
+  colors: string[] = [
+    "red",
+    "blue",
+    "green",
+    "orange",
+    "magenta",
+    "steelblue",
+    "brown"
+  ];
+  selectedIcon = this.icons[0];
+  selectedColor = this.colors[0];
+  iconControl = new FormControl('',[Validators.required]);
+  colorControl = new FormControl('',[Validators.required]);
+
   constructor() { }
 
   ngOnInit(): void {
+    this.buildForm();
   }
 
+  buildForm() : void{
+    this.form=new FormGroup({
+      caption: new FormControl('',[Validators.required]),
+      description:new FormControl('',[Validators.required]),
+      icon: this.iconControl,
+      color:this.colorControl
+    });
+  }
+
+  get(fieldName: string){
+    return this.form.get(fieldName);
+  }
 }
+
+
+

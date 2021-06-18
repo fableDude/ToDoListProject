@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import {MatIconModule} from '@angular/material/icon';
+import {MatSelectModule} from '@angular/material/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListComponent } from './components/list/list.component';
 import { ListsComponent } from './components/lists/lists.component';
@@ -14,6 +15,7 @@ import { ListViewComponent } from './components/list-view/list-view.component';
 import { ItemsViewComponent } from './components/items-view/items-view.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
       metaReducers
     }),
     BrowserAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    MatSelectModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,1 +1,29 @@
-<p>list-edit works!</p>
+<form>
+    <div class="form" [formGroup]="form">
+        <div class="form-field" *ngIf="get('caption') as field">
+            <label for="caption">caption</label>
+            <input type="text" formControlName="caption">
+        </div>
+
+        <div class="form-field" *ngIf="get('description') as field">
+            <label for="description">Description</label>
+            <textarea rows="4" formControlName="description"></textarea>
+        </div>
+
+        <mat-form-field class="form-field"appearance="fill"  *ngIf="get('icon') as field">
+            <mat-select [formControl]="iconControl" name="icon" [(value)]="selectedIcon">
+                <mat-select-trigger>
+                    <mat-icon>{{selectedIcon}}</mat-icon>
+                </mat-select-trigger>
+                <mat-option *ngFor="let icon of icons" [value]="icon">
+                    <mat-icon>{{icon}}</mat-icon>
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <select class="form-field" onchange="this.className='form-field '+this.options[this.selectedIndex].className">
+            <option class="{{color}}" *ngFor="let color of colors">{{color}}</option>
+        </select>
+
+    </div>
+</form>

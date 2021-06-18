@@ -1,0 +1,70 @@
+.form{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+
+.form-field{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    color: black;
+}
+
+label{
+    font-size: 12px;
+}
+
+input, textarea{
+    outline:  0px transparent;
+}
+
+input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched{
+    border: 1px solid red;
+}
+
+mat-form-field{
+    border: 1px solid grey;
+}
+
+mat-label{
+    color: black;
+}
+
+mat-option{
+    color: black;
+    background-color: white;
+}
+
+:host /deep/ .mat-select-value-text {
+    color: black;
+  }
+
+.red{
+      color: red;
+}
+
+.green{
+    color: green;
+}
+
+.blue{
+    color: blue;
+}
+
+.magenta{
+    color: magenta;
+}
+
+.steelblue{
+    color: steelblue;
+}
+
+.brown{
+    color: brown;
+}
+
+.orange{
+    color: orange;
+}
+
