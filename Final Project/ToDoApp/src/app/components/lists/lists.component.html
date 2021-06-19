@@ -2,4 +2,4 @@
 icon={{item.icon}} color={{item.color}} caption={{item.caption}}
 (click)="showList(item.id)"></app-list>
 
-<app-list icon="add" color="grey" caption="new list"></app-list>
+<app-list icon="add" color="grey" caption="new list" (click)="navigate('lists/-1/edit')"></app-list>

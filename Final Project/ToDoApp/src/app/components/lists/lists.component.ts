@@ -29,4 +29,8 @@ export class ListsComponent implements OnInit {
     this.router.navigateByUrl("lists/"+id);
   }
 
+  navigate(path:string){
+    this.router.navigateByUrl(path);
+  }
+
 }
