@@ -1,3 +1,5 @@
-<app-list *ngFor="let item of lists" icon={{item.icon}} color={{item.color}} caption={{item.caption}}></app-list>
+<app-list *ngFor="let item of lists" 
+icon={{item.icon}} color={{item.color}} caption={{item.caption}}
+(click)="showList(item.id)"></app-list>
 
 <app-list icon="add" color="grey" caption="new list"></app-list>

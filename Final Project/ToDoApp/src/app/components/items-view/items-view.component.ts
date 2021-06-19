@@ -15,12 +15,7 @@ export class ItemsViewComponent implements OnInit {
   @Input()
   isInsertable!:boolean;
   
-  items:ToDoItem[] = [
-    {caption:"item 1", id:0, isComplited:false, listId:0},
-    {caption:"item 2", id:1, isComplited:true, listId:0},
-    {caption:"item 3", id:2, isComplited:true, listId:0},
-    {caption:"item 1 list 2", id:0,isComplited:false, listId:1}
-  ];
+  items:ToDoItem[] = [];
 
   newItemControl = new FormControl("",[Validators.required]);
 
@@ -38,6 +33,7 @@ export class ItemsViewComponent implements OnInit {
   }
 
   async getListItems(){
+    console.log(this.listId);
     let result = this.service.getListItems(this.listId);
     this.items = await result;
   }

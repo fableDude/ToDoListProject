@@ -10,6 +10,11 @@ nav{
     font-weight: bold;
 }
 
+.menu-bar a.active-link{
+    background-color: rgb(119, 185, 99);
+    color: rgb(170, 36, 36);
+}
+
 .menu-bar a:hover{
     background-color: rgb(142, 99, 185);
     color: rgb(236, 209, 250);

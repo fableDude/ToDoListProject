@@ -1,6 +1,6 @@
 
 .created-by{
-    height: 100%;
+    height: auto;
     grid-row: 3/3;
     align-items: center;
     text-align: center;
@@ -23,6 +23,7 @@
     border-radius: 6px;
     color: red;
     background-color: lightpink;
+    cursor: pointer;
 }
 
 .info-presenter{

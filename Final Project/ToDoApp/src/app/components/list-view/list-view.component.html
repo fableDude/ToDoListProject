@@ -1,4 +1,4 @@
-<div class="root">
+<div class="root" *ngIf="(list$ | async) as list" >
         <mat-icon style.color="{{list.color}}">{{list.icon}}</mat-icon>
         <p>{{list.description}}</p>
     <div class="actions">

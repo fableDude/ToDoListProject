@@ -4,13 +4,13 @@
     <h3>{{date|date:'dd/MM/YYYY'}}</h3>
   </div>
   <div class="user-actions">
-    <div class="action-button">Create new list</div>
-    <div class="action-button">View all lists</div>
-    <div class="action-button">View all items</div>
+    <a class="action-button" (click)="navigate('lists/-1/edit')">Create new list</a>
+    <a class="action-button" (click)="navigate('lists')">View all lists</a>
+    <a class="action-button" (click)="navigate('items')">View all items</a>
   </div>
   <div class="info-presenter">
     <div class="presenter">
-      <mat-icon class="icon">list</mat-icon>
+      <mat-icon class="icon">list</mat-icon> 
       <h1>0</h1>
       <p>Lists</p>
     </div>

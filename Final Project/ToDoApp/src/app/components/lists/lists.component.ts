@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToDoList } from 'src/app/models/todo-list.model';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-lists',
@@ -8,16 +10,23 @@ import { ToDoList } from 'src/app/models/todo-list.model';
 })
 export class ListsComponent implements OnInit {
   lists:ToDoList[]=[
-    {icon:"check", color:"red",caption:"1",description:"1",id:0},
-    {icon:"star", color:"blue",caption:"2",description:"1",id:0},
-    {icon:"shopping_cart", color:"violet",caption:"3",description:"1",id:0},
-    {icon:"circle", color:"yellow",caption:"4",description:"1",id:0},
-
   ];
 
-  constructor() { }
+  constructor(
+    private service:DataService,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
+    this.getLists();
+  }
+
+  async getLists(){
+    this.lists = await this.service.getAllLists();
+  }
+
+  showList(id:number){
+    this.router.navigateByUrl("lists/"+id);
   }
 
 }

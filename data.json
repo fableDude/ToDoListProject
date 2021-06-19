@@ -2,11 +2,20 @@
   "lists": [
     {
       "id": 0,
-      "caption": "The Lion King",
+      "caption": "Shopping",
       "description": "shopping",
       "icon": "shopping_cart",
       "color":"blue"
+    },
+	{
+      "id": 1,
+      "caption": "Shopping",
+      "description": "shopping",
+      "icon": "stars",
+      "color":"red"
     }
+
+
 
   ],
   "items": [

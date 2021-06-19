@@ -19,7 +19,10 @@ export class DataService {
   }
 
   getListItems(listId:string){
-    return this.http.get<ToDoItem[]>(this.url+"items?listId="+listId).toPromise();
+    if(listId){
+      return this.http.get<ToDoItem[]>(this.url+"items?listId="+listId).toPromise();
+    }
+    return this.getAllItems();
   }
 
   getAllItems(){
