@@ -36,4 +36,8 @@ export class DataService {
   addNewList(list:ToDoList){
     return this.http.post<ToDoList>(this.url+"lists",list).toPromise();
   }
+
+  deleteList(listId:number){
+    return this.http.delete(this.url+"lists/"+listId).toPromise();
+  }
 }

@@ -2,9 +2,9 @@
         <mat-icon style.color="{{list.color}}">{{list.icon}}</mat-icon>
         <p>{{list.description}}</p>
     <div class="actions">
-        <button>New List...</button>
-        <button>Edit...</button>
-        <button>Delete</button>
+        <button (click)="navigate('lists/-1/edit')">New List...</button>
+        <button (click)="navigate('lists/'+list.id+'/edit')">Edit...</button>
+        <button (click)="deleteList(list.id)">Delete</button>
     </div>    
     <app-items-view [listId]="list.id.toString()" [isInsertable]="true"></app-items-view>
 

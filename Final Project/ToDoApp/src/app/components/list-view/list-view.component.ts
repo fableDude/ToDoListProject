@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToDoList } from 'src/app/models/todo-list.model';
 import { DataService } from 'src/app/services/data.service';
 import { map, switchMap } from 'rxjs/operators';
@@ -15,14 +15,15 @@ export class ListViewComponent implements OnInit {
 
   constructor(
     private service:DataService,
-    private route:ActivatedRoute
+    private route:ActivatedRoute,
+    private router:Router
     ) { }
 
   ngOnInit(): void {
     this.getList();
   }
 
-  async getList(){
+  getList(){
     let id$ = this.route.params.pipe(
       map(prms => prms['id'])
     );
@@ -30,6 +31,16 @@ export class ListViewComponent implements OnInit {
     this.list$ = id$.pipe(
       switchMap(id => this.service.getListById(id))
     );
+  }
+
+  navigate(path:string){
+    this.router.navigateByUrl(path);
+  }
+
+  async deleteList(id:number){
+    let res = await this.service.deleteList(id);
+    console.log(res);
+    this.router.navigateByUrl("lists");
   }
 
 }

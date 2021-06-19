@@ -30,3 +30,7 @@ mat-icon{
     width: 250px;
     justify-content: space-around;
 }
+
+button{
+    cursor: pointer;
+}
