@@ -9,7 +9,7 @@
         <textarea rows="4" formControlName="description"></textarea>
     </div>
 
-    <div class="form-field">
+    <div class="form-field mat-form-field-invalid">
         <label  for="icon">Icon</label>
         <mat-form-field appearance="fill"  *ngIf="get('icon') as field">
             <mat-select [formControl]="iconControl" name="icon" [(value)]="selectedIcon">

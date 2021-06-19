@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatIcon } from '@angular/material/icon';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { observable, Observable } from 'rxjs';
+import { filter, first, map, observeOn, switchMap } from 'rxjs/operators';
 import { ToDoList } from 'src/app/models/todo-list.model';
 import { DataService } from 'src/app/services/data.service';
 
@@ -17,6 +17,7 @@ export class ListEditComponent implements OnInit {
   form!: FormGroup;
   list$!:Observable<ToDoList>;
   listId$!:Observable<string>;
+  list!:ToDoList;
   icons: string[] =[
     "event",
     "work",
@@ -45,23 +46,34 @@ export class ListEditComponent implements OnInit {
     ){}
 
    async ngOnInit():Promise<void>{
+    this.buildForm();
     this.listId$ = this.route.params.pipe(
-      map(prms => prms['id'])
+      map(prms => prms['id']),
+      first()
       );
+
     this.list$ = this.listId$.pipe(
-      switchMap(id=>this.service.getListById(id))
-    );   
-    await this.buildForm();
+      switchMap(id=> this.service.getListById(id)),
+      first()
+      );  
+    try {
+      this.list = await this.list$.toPromise();
+      console.log(this.list);
+    } catch (error) {
+      this.list ={caption:"",icon:"",description:"",color:"",id:999}
+    }
+    this.form.reset(this.list);
+   
   }
 
-   async buildForm() :Promise<void>{
+   buildForm() :void{
     this.form=new FormGroup({
       caption: new FormControl('',[Validators.required]),
       description:new FormControl('',[Validators.required]),
       icon: this.iconControl,
       color:this.colorControl
     });
-    this.form.reset(await this.list$.toPromise());
+    
   }
 
   get(fieldName: string){

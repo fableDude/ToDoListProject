@@ -11,7 +11,7 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
   getListById(id:string){
-    return this.http.get<ToDoList>(this.url+"lists/"+id).toPromise();
+      return this.http.get<ToDoList>(this.url+"lists/"+id).toPromise();
   }
 
   getAllLists(){
