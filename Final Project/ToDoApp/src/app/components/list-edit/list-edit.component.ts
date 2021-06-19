@@ -80,11 +80,12 @@ export class ListEditComponent implements OnInit {
     return this.form.get(fieldName);
   }
 
-  onSave(){
+  async onSave(){
     let newList : ToDoList = {
       ...this.form.value
     }
-    this.service.addNewList(newList);
+    await this.service.addNewList(newList);
+    this.router.navigateByUrl("lists");
   }
 }
 

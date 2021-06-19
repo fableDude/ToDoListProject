@@ -1,11 +1,11 @@
-<ng-container *ngFor="let item of items; let ind=index">
+<ng-container *ngFor="let item of (items$ | async) as items; let ind=index">
     <div *ngIf="!items[ind].isComplited"> 
-        <input type="checkbox" (click)="checkItem(item.id,item.listId)" id={{item.id}}{{item.listId}} name={{item.caption}}>
+        <input type="checkbox" (click)="checkItem(item.id)" id={{item.id}}{{item.listId}} name={{item.caption}}>
         <label for={{item.id}}{{item.listId}}>{{item.caption}}</label>
     </div>
 </ng-container>
 <ng-container *ngIf="isInsertable">
     <input type="checkbox" id="insertNew">
     <input type="text" id="newItem" [formControl]="newItemControl">
-    <button class="newItem" [disabled]="newItemControl.valid" onclick="addNew()">+</button>
+    <button class="newItem" [disabled]="!newItemControl.value" (click)="addNew()">+</button>
 </ng-container>

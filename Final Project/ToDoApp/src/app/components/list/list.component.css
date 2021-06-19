@@ -9,8 +9,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
-
 }
 
 .root:hover{
@@ -43,9 +41,15 @@
 .green{
     color: green;
 }
-.yellow{
-    color: yellow;
+.orange{
+    color: orange;
 }
-.violet{
-    color: violet;
+.magenta{
+    color: magenta;
+}
+.steelblue{
+    color: steelblue;
+}
+.brown{
+    color: brown;
 }

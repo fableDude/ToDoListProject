@@ -4,3 +4,7 @@
     flex-direction: row;
     flex-wrap: wrap;
 }
+
+app-list{
+    height: 70px;
+}

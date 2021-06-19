@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { toUnicode } from 'punycode';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 import { ToDoItem } from 'src/app/models/todo-item.model';
 import { DataService } from 'src/app/services/data.service';
 
@@ -15,37 +17,37 @@ export class ItemsViewComponent implements OnInit {
   @Input()
   isInsertable!:boolean;
   
-  items:ToDoItem[] = [];
+  items$!:Observable<ToDoItem[]>;
+  private newItem$ = new BehaviorSubject<number>(0);
 
   newItemControl = new FormControl("",[Validators.required]);
 
   constructor(public service:DataService) { }
 
   ngOnInit(): void {
-    this.getListItems();
+    console.log("id:"+this.listId);
+    this.items$ = this.newItem$.pipe(
+      switchMap(id =>this.service.getListItems(this.listId))
+    );
   }
   
-  checkItem(itemId:number ,listId:number):void {
-   let item = this.items.find(item=>item.id===itemId && item.listId===listId);
-    if(item !== undefined){
-      this.items[this.items.indexOf(item)].isComplited=true;
-    }
+  async checkItem(itemId:number):Promise<void> {
+    console.log("clicked");
+   await this.service.checkItem(itemId.toString());
+   this.newItem$.next(Number(this.listId));
   }
 
-  async getListItems(){
-    console.log(this.listId);
-    let result = this.service.getListItems(this.listId);
-    this.items = await result;
-  }
 
-  addNew(){
+  async addNew(){
     let newItem:ToDoItem={
       id:0,
       isComplited:false,
       listId:Number(this.listId),
       caption:this.newItemControl.value
     }
-    this.service.addNewItem(newItem);
+    await this.service.addNewItem(newItem);
+    this.newItem$.next(newItem.listId)
+    this.newItemControl.reset();
   }
     
 }

@@ -40,4 +40,8 @@ export class DataService {
   deleteList(listId:number){
     return this.http.delete(this.url+"lists/"+listId).toPromise();
   }
+
+  checkItem(itemId:string){
+    return this.http.patch(this.url+"items/"+itemId,{"isComplited":true}).toPromise();
+  }
 }
