@@ -58,7 +58,6 @@ export class ListEditComponent implements OnInit {
       );  
     try {
       this.list = await this.list$.toPromise();
-      console.log(this.list);
     } catch (error) {
       this.list ={caption:"",icon:"",description:"",color:"",id:999}
     }

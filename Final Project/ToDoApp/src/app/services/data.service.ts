@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { filter, map, switchMap } from 'rxjs/operators';
 import { ToDoItem } from '../models/todo-item.model';
 import { ToDoList } from '../models/todo-list.model';
 
@@ -43,5 +44,25 @@ export class DataService {
 
   checkItem(itemId:string){
     return this.http.patch(this.url+"items/"+itemId,{"isComplited":true}).toPromise();
+  }
+
+  countLists():Promise<number>{
+    return this.http.get<ToDoList[]>(this.url+"lists").pipe(
+      map(list => list.length)
+    ).toPromise();
+  }
+
+  countItems():Promise<number>{
+    return this.http.get<ToDoItem[]>(this.url+"items").pipe(
+      map(item => item.length)
+    ).toPromise();
+    
+  }
+
+  countActiveItems():Promise<number>{
+    return this.http.get<ToDoItem[]>(this.url+"items").pipe(
+      map(item => item.filter(i => !i.isComplited)),
+      map(item => item.length)
+    ).toPromise();
   }
 }

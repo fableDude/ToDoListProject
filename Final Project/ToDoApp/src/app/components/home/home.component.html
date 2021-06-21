@@ -11,17 +11,17 @@
   <div class="info-presenter">
     <div class="presenter">
       <mat-icon class="icon">list</mat-icon> 
-      <h1>0</h1>
+      <h1>{{listsCount$ | async}}</h1>
       <p>Lists</p>
     </div>
     <div class="presenter">
       <mat-icon class="icon">check</mat-icon>
-      <h1>0</h1>
+      <h1>{{itemsCount | async}}</h1>
       <p>ToDo Items</p>
     </div>
     <div class="presenter">
       <mat-icon class="icon">hourglass_empty</mat-icon>
-      <h1>0</h1>
+      <h1>{{activeItemsCount | async}}</h1>
       <p>Active Items</p>
     </div>
   </div>
