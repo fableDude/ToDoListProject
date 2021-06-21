@@ -38,6 +38,10 @@ export class DataService {
     return this.http.post<ToDoList>(this.url+"lists",list).toPromise();
   }
 
+  updateList(list:ToDoList){
+    return this.http.patch<ToDoList>(this.url+"lists/"+list.id,list).toPromise();
+  }
+
   deleteList(listId:number){
     return this.http.delete(this.url+"lists/"+listId).toPromise();
   }

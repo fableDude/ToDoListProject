@@ -5,7 +5,16 @@
         <button (click)="navigate('lists/-1/edit')">New List...</button>
         <button (click)="navigate('lists/'+list.id+'/edit')">Edit...</button>
         <button (click)="deleteList(list.id)">Delete</button>
-    </div>    
-    <app-items-view [listId]="list.id.toString()" [isInsertable]="true"></app-items-view>
+    </div>
+    
+    <ng-container *ngFor="let item of (items$ | async)">  
+        <app-todo-item-presenter [caption]="item.caption" [isComplited]="item.isComplited" (click)="checkItem(item.id)"></app-todo-item-presenter>
+    </ng-container>  
+    
+    <div class="addItem">
+        <input type="checkbox" id="insertNew">
+        <input type="text" id="newItem" [formControl]="newItemControl">
+         <button class="newItem" [disabled]="!newItemControl.value" (click)="addNew()">+</button>
+    </div>
 
 </div>

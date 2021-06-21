@@ -16,6 +16,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { TodoItemPresenterComponent } from './components/todo-item-presenter/todo-item-presenter.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
     ListViewComponent,
     ItemsViewComponent,
     HomeComponent,
-    NavBarComponent
+    NavBarComponent,
+    TodoItemPresenterComponent
   ],
   imports: [
     BrowserModule,

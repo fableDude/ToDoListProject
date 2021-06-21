@@ -1,0 +1,7 @@
+div{
+    display: flex;
+    flex-direction: row;
+}
+input{
+    margin: 5px;
+}

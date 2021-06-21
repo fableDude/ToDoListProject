@@ -1,9 +1,9 @@
 .root{
     display: grid;
-    grid-template: 20px auto 1fr/50px 1fr;
+    grid-template: 20px auto 1fr auto/50px 1fr;
 }
 
-app-items-view{
+app-todo-item-presenter{
     grid-column: 1/-1;
 }
 
@@ -33,4 +33,13 @@ mat-icon{
 
 button{
     cursor: pointer;
+}
+
+div{
+    display: flex;
+    flex-direction: row;
+}
+
+input{
+    margin: 5px;
 }

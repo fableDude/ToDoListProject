@@ -59,7 +59,7 @@ export class ListEditComponent implements OnInit {
     try {
       this.list = await this.list$.toPromise();
     } catch (error) {
-      this.list ={caption:"",icon:"",description:"",color:"",id:999}
+      this.list ={caption:"",icon:"",description:"",color:"",id:-1}
     }
     this.form.reset(this.list);
    
@@ -81,11 +81,20 @@ export class ListEditComponent implements OnInit {
 
   async onSave(){
     let newList : ToDoList = {
+      "id":this.list.id,
       ...this.form.value
+    };
+    console.log(newList);
+    if(this.list.id != -1){
+      await this.service.updateList(newList);
     }
-    await this.service.addNewList(newList);
+    else{
+      await this.service.addNewList(newList);
+    }      
     this.router.navigateByUrl("lists");
   }
+
+  
 }
 
 
