@@ -24,7 +24,20 @@ app-todo-item-presenter{
     justify-content: space-around;
 }
 
+.confirm-delete .yes{
+    color: honeydew;
+    font-weight: bold;
+    background-color: red;
+}
+
+.confirm-delete .no{
+    color: honeydew;
+    font-weight: bold;
+    background-color: green;
+}
+
 .confirm-delete p{
+    color: red;
     padding: 0px;
     margin: 0px;
     align-self: center;

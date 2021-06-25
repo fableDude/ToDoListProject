@@ -11,8 +11,8 @@
         </div>
         <div class="confirm-delete" *ngIf="delete$|async">
             <p>are you sure you want to delete this list?</p>
-            <button (click)="deleteList(list.id)">yes</button>
-            <button (click)="confirmDelete(false)">no</button>
+            <button class="yes" (click)="deleteList(list.id)">yes</button>
+            <button class="no"(click)="confirmDelete(false)">no</button>
         </div>
     </div>
     
