@@ -6,6 +6,7 @@ import { observable, Observable } from 'rxjs';
 import { filter, first, map, observeOn, switchMap } from 'rxjs/operators';
 import { ToDoList } from 'src/app/models/todo-list.model';
 import { DataService } from 'src/app/services/data.service';
+import { letterValidator, wordValidators } from 'src/app/validations/general-validators';
 
 @Component({
   selector: 'app-list-edit',
@@ -67,7 +68,7 @@ export class ListEditComponent implements OnInit {
 
    buildForm() :void{
     this.form=new FormGroup({
-      caption: new FormControl('',[Validators.required]),
+      caption: new FormControl('',[Validators.required,wordValidators(10),letterValidator(30)]),
       description:new FormControl('',[Validators.required]),
       icon: this.iconControl,
       color:this.colorControl

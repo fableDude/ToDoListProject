@@ -7,6 +7,7 @@
     <div class="form-field" *ngIf="get('description') as field">
         <label for="description">Description</label>
         <textarea rows="4" formControlName="description"></textarea>
+        <app-error-presenter [errors]="field.errors"></app-error-presenter>
     </div>
 
     <div class="form-field">

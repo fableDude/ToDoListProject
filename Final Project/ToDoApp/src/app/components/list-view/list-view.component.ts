@@ -6,6 +6,7 @@ import { first, map, switchMap } from 'rxjs/operators';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ToDoItem } from 'src/app/models/todo-item.model';
 import { FormControl, Validators } from '@angular/forms';
+import { letterValidator, wordValidators } from 'src/app/validations/general-validators';
 
 @Component({
   selector: 'app-list-view',
@@ -18,7 +19,7 @@ export class ListViewComponent implements OnInit {
   list$!: Observable<ToDoList>;
   items$!:Observable<ToDoItem[]>;
   private newItem$ = new BehaviorSubject<number>(0);
-  newItemControl = new FormControl("",[Validators.required]);
+  newItemControl = new FormControl("",[wordValidators(3),letterValidator(10)]);
   
   constructor(
     private service:DataService,

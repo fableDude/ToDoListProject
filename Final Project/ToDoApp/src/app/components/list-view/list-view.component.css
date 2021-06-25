@@ -1,9 +1,27 @@
 .root{
     display: grid;
-    grid-template: 20px auto 1fr auto/50px 1fr;
+    grid-template: 20px auto auto auto auto/50px 1fr;
 }
 
 app-todo-item-presenter{
+    display: flex;
+    flex-direction: row;
+    width: 150px;
+}
+
+.addItem{
+    grid-row: -2/-2;
+}
+
+.items-presenter{
+    display: flex;
+    flex-direction: column;
+}
+
+app-error-presenter{
+    display: flex;
+    flex-direction: row;
+    grid-row: -1/-1;
     grid-column: 1/-1;
 }
 
@@ -43,3 +61,5 @@ div{
 input{
     margin: 5px;
 }
+
+
