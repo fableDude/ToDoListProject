@@ -1,5 +1,6 @@
 import {  NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { HomeComponent } from './components/home/home.component';
 import { ItemsViewComponent } from './components/items-view/items-view.component';
 import { ListEditComponent } from './components/list-edit/list-edit.component';
@@ -12,7 +13,8 @@ const routes: Routes = [
   {path:'lists',component:ListsComponent},
   {path:'lists/:id',component:ListViewComponent},
   {path:'lists/:id/edit',component:ListEditComponent},
-  {path:'items',component:ItemsViewComponent}
+  {path:'items',component:ItemsViewComponent},
+  {path:'**',component:ErrorPageComponent}
 ];
 
 @NgModule({

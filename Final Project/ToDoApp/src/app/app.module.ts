@@ -17,6 +17,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { TodoItemPresenterComponent } from './components/todo-item-presenter/todo-item-presenter.component';
+import { ErrorPageComponent } from './components/error-page/error-page.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { TodoItemPresenterComponent } from './components/todo-item-presenter/tod
     ItemsViewComponent,
     HomeComponent,
     NavBarComponent,
-    TodoItemPresenterComponent
+    TodoItemPresenterComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,
