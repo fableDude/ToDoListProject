@@ -1,13 +1,53 @@
 .root{
     display: grid;
-    grid-template: 20px auto auto auto auto/50px 1fr;
+    grid-template: 20px auto auto auto auto auto/50px 1fr;
 }
 
 app-todo-item-presenter{
     display: flex;
     flex-direction: row;
-    width: 150px;
+    width: auto;
 }
+
+.user-actions{
+    grid-column: 2/-1;
+    display: flex;
+    flex-direction: column;
+}
+
+.confirm-delete{
+    grid-column: 2/-1;
+    margin-left: 15px;
+    display: flex;
+    width: 350px;
+    height: 41px;
+    justify-content: space-around;
+}
+
+.confirm-delete p{
+    padding: 0px;
+    margin: 0px;
+    align-self: center;
+    justify-self: center;
+}
+
+.confirm-delete button{
+    height: 21px;
+    align-self: center;
+    justify-self: center;
+}
+
+.actions{
+    grid-column: 2/-1;
+    padding: 10px;
+    display: flex;
+    width: 250px;
+    justify-content: space-around;
+}
+/* .items-presenter app-todo-item-presenter[ng-reflect-is-complited=true]{
+    background-color: red;
+    
+} */
 
 .addItem{
     grid-row: -2/-2;
@@ -16,6 +56,7 @@ app-todo-item-presenter{
 .items-presenter{
     display: flex;
     flex-direction: column;
+    grid-row: 3/-3;
 }
 
 app-error-presenter{
@@ -41,13 +82,10 @@ mat-icon{
     align-self: center;
 }
 
-.actions{
-    grid-column: 2/-1;
-    padding: 10px;
-    display: flex;
-    width: 250px;
-    justify-content: space-around;
+mat-icon + p{
+    margin-left: 25px;
 }
+
 
 button{
     cursor: pointer;
@@ -60,6 +98,14 @@ div{
 
 input{
     margin: 5px;
+}
+
+.header{
+    margin-left: 15px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    font-size: x-large;
+    align-self: center;
 }
 
 

@@ -19,6 +19,7 @@ export class ListViewComponent implements OnInit {
   list$!: Observable<ToDoList>;
   items$!:Observable<ToDoItem[]>;
   private newItem$ = new BehaviorSubject<number>(0);
+  delete$ = new BehaviorSubject<boolean>(false);
   newItemControl = new FormControl("",[wordValidators(3),letterValidator(10)]);
   
   constructor(
@@ -55,6 +56,10 @@ export class ListViewComponent implements OnInit {
 
   navigate(path:string){
     this.router.navigateByUrl(path);
+  }
+
+  confirmDelete(d:boolean){
+    this.delete$.next(d);
   }
 
   async deleteList(id:number){

@@ -21,6 +21,7 @@ import { ErrorPageComponent } from './components/error-page/error-page.component
 import { ErrorPresenterComponent } from './components/error-presenter/error-presenter.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,7 @@ import { ErrorPresenterComponent } from './components/error-presenter/error-pres
     NavBarComponent,
     TodoItemPresenterComponent,
     ErrorPageComponent,
-    ErrorPresenterComponent,
+    ErrorPresenterComponent
   ],
   imports: [
     BrowserModule,

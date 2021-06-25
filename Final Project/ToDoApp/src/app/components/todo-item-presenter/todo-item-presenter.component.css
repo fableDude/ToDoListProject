@@ -5,3 +5,10 @@ div{
 input{
     margin: 5px;
 }
+label{
+    width: 800px;
+}
+:checked + label{
+    text-decoration: line-through;
+    opacity: 70%;
+}

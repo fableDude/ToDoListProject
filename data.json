@@ -1,160 +1,19 @@
 {
   "lists": [
     {
-      "id": 0,
-      "caption": "Shopping",
-      "description": "shopping",
-      "icon": "shopping_cart",
+      "id": 1,
+      "caption": "aaa",
+      "description": "a a aaaa aa aaa  aaa aaa aaaaa aaaa aaaaa ",
+      "icon": "work",
       "color": "blue"
-    },
-    {
-      "caption": "Shopping2",
-      "description": "shopping2",
-      "icon": "shopping_cart",
-      "color": "orange",
-      "id": 1
-    },
-    {
-      "caption": "aaaddd",
-      "description": "aaagfgf",
-      "icon": "stars",
-      "color": "blue",
-      "id": 2
-    },
-    {
-      "caption": "new list",
-      "description": "new aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      "icon": "flag",
-      "color": "steelblue",
-      "id": 3
     }
   ],
   "items": [
     {
-      "id": 0,
-      "caption": "milke",
-      "listId": 0,
-      "isComplited": false
-    },
-    {
       "id": 1,
-      "caption": "eggs",
-      "listId": 0,
-      "isComplited": false
-    },
-    {
-      "id": 2,
-      "caption": "bread",
-      "listId": 0,
-      "isComplited": false
-    },
-    {
-      "id": 3,
-      "isComplited": true,
-      "listId": 0,
-      "caption": "redbull"
-    },
-    {
-      "id": 4,
-      "isComplited": true,
-      "listId": 0,
-      "caption": "noodels"
-    },
-    {
-      "id": 5,
-      "isComplited": true,
-      "listId": 0,
-      "caption": "xl"
-    },
-    {
-      "id": 6,
-      "isComplited": true,
-      "listId": 0,
-      "caption": "zoom"
-    },
-    {
-      "id": 7,
-      "isComplited": true,
-      "listId": 0,
-      "caption": "zoom"
-    },
-    {
-      "id": 8,
-      "isComplited": true,
-      "listId": 0,
-      "caption": "ice cream"
-    },
-    {
-      "id": 9,
-      "isComplited": true,
-      "listId": 0,
-      "caption": "buble gum"
-    },
-    {
-      "id": 10,
-      "isComplited": true,
-      "listId": 1,
-      "caption": "list2"
-    },
-    {
-      "id": 11,
-      "isComplited": false,
-      "listId": 2,
-      "caption": "aaaa"
-    },
-    {
-      "id": 12,
-      "isComplited": true,
-      "listId": 2,
-      "caption": "aaaa2"
-    },
-    {
-      "id": 13,
-      "isComplited": false,
-      "listId": 2,
-      "caption": "aaaa3"
-    },
-    {
-      "id": 14,
       "isComplited": false,
       "listId": 1,
-      "caption": "shop2"
-    },
-    {
-      "id": 15,
-      "isComplited": false,
-      "listId": 1,
-      "caption": "list222"
-    },
-    {
-      "id": 16,
-      "isComplited": false,
-      "listId": 3,
-      "caption": "aaaaa"
-    },
-    {
-      "id": 17,
-      "isComplited": true,
-      "listId": 0,
-      "caption": "add"
-    },
-    {
-      "id": 18,
-      "isComplited": false,
-      "listId": 0,
-      "caption": "aa"
-    },
-    {
-      "id": 19,
-      "isComplited": true,
-      "listId": 0,
-      "caption": "sdf"
-    },
-    {
-      "id": 20,
-      "isComplited": false,
-      "listId": 0,
-      "caption": "buy somthing now"
+      "caption": "a a aaaaaaaaa"
     }
   ]
 }

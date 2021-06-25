@@ -68,8 +68,8 @@ export class ListEditComponent implements OnInit {
 
    buildForm() :void{
     this.form=new FormGroup({
-      caption: new FormControl('',[Validators.required,wordValidators(10),letterValidator(30)]),
-      description:new FormControl('',[Validators.required]),
+      caption: new FormControl('',[Validators.required]),
+      description:new FormControl('',[Validators.required,wordValidators(10),letterValidator(30)]),
       icon: this.iconControl,
       color:this.colorControl
     });
@@ -85,11 +85,11 @@ export class ListEditComponent implements OnInit {
       "id":this.list.id,
       ...this.form.value
     };
-    console.log(newList);
     if(this.list.id != -1){
       await this.service.updateList(newList);
     }
     else{
+      newList.id = 0;
       await this.service.addNewList(newList);
     }      
     this.router.navigateByUrl("lists");

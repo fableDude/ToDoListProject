@@ -43,6 +43,7 @@ export class DataService {
   }
 
   deleteList(listId:number){
+    this.http.delete(this.url+"items?listId="+listId);
     return this.http.delete(this.url+"lists/"+listId).toPromise();
   }
 

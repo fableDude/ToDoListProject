@@ -12,18 +12,26 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./items-view.component.css']
 })
 export class ItemsViewComponent implements OnInit {
-  @Input()
-  caption!:string;
-  @Input()
-  isComplited!:boolean;
-
-  
-
-
+  items$!:Observable<ToDoItem[]>;
+  itemChecked = new BehaviorSubject<number>(0);
+  checkedItemsCount$!:Observable<number>;
   constructor(public service:DataService) { }
 
   ngOnInit(): void {
+    this.items$ =  this.itemChecked.pipe(
+      switchMap(item => this.service.getAllItems())
+    );
+
+    this.checkedItemsCount$ = this.itemChecked.pipe(
+      switchMap(item => this.service.countActiveItems())
+    );
   }
+
+  async checkItem(itemId:number):Promise<void> {
+   await this.service.checkItem(itemId.toString());
+   this.itemChecked.next(itemId)
+  }
+
   
     
 }
