@@ -1,6 +1,6 @@
 <div class="header" *ngIf="(list$ | async) as list" style.color="{{list.color}}">Lists > {{list.caption}}</div>
 <div class="root" *ngIf="(list$ | async) as list" >
-        <mat-icon style.color="{{list.color}}">{{list.icon}}</mat-icon>
+        <mat-icon style.color="{{list.color}}">{{list.image}}</mat-icon>
         <p>{{list.description}}</p>
     
     <div class="user-actions">
@@ -18,7 +18,7 @@
     
     <div class="items-presenter">
         <ng-container *ngFor="let item of (items$ | async)">  
-            <app-todo-item-presenter [caption]="item.caption" [isComplited]="item.isComplited" (click)="checkItem(item.id)"></app-todo-item-presenter>
+            <app-todo-item-presenter [caption]="item.caption" [isCompleted]="item.isCompleted" (click)="checkItem(item.id)"></app-todo-item-presenter>
         </ng-container>  
     </div>
 

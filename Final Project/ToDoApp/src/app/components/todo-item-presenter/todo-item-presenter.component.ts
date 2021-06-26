@@ -17,11 +17,12 @@ export class TodoItemPresenterComponent implements OnInit {
   @Input()
   caption!:string;
   @Input()
-  isComplited!:boolean;
+  isCompleted!:boolean;
 
   constructor(public service:DataService) { }
 
   ngOnInit(): void {
+    console.log(""+this.caption+": "+this.isCompleted);
   }
   
 }

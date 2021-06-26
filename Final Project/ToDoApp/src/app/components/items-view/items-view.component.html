@@ -1,9 +1,9 @@
 <div class="header">Active Items</div>
 <ng-container *ngFor="let item of (items$ | async)">  
     <app-todo-item-presenter 
-    *ngIf = "!item.isComplited"
+    *ngIf = "!item.isCompleted"
     [caption]="item.caption" 
-    [isComplited]="item.isComplited"
+    [isCompleted]="item.isCompleted"
      (click)="checkItem(item.id)"
      ></app-todo-item-presenter>
 </ng-container> 

@@ -8,66 +8,66 @@ import { ToDoList } from '../models/todo-list.model';
   providedIn: 'root'
 })
 export class DataService {
-  url ="http://localhost:3000/"
+  url ="http://localhost:5000/"
 
   constructor(private http: HttpClient) { }
   getListById(id:string){
-      return this.http.get<ToDoList>(this.url+"lists/"+id).toPromise();
+      return this.http.get<ToDoList>(this.url+"ToDoLists/"+id).toPromise();
   }
 
   getAllLists(){
-    return this.http.get<ToDoList[]>(this.url+"lists").toPromise();
+    return this.http.get<ToDoList[]>(this.url+"ToDoLists").toPromise();
   }
 
   getListItems(listId:string){
     if(listId){
-      return this.http.get<ToDoItem[]>(this.url+"items?listId="+listId).toPromise();
+      return this.http.get<ToDoItem[]>(this.url+"ToDoItems/bylist/"+listId).toPromise();
     }
     return this.getAllItems();
   }
 
   getAllItems(){
-    return this.http.get<ToDoItem[]>(this.url+"items").toPromise(); 
+    return this.http.get<ToDoItem[]>(this.url+"ToDoItems").toPromise(); 
   }
 
   addNewItem(item:ToDoItem){
-    return this.http.post<ToDoItem>(this.url+"items",item).toPromise();
+    return this.http.post<ToDoItem>(this.url+"ToDoItems",item).toPromise();
   }
 
   addNewList(list:ToDoList){
-    return this.http.post<ToDoList>(this.url+"lists",list).toPromise();
+    return this.http.post<ToDoList>(this.url+"ToDoLists",list).toPromise();
   }
 
   updateList(list:ToDoList){
-    return this.http.patch<ToDoList>(this.url+"lists/"+list.id,list).toPromise();
+    return this.http.patch<ToDoList>(this.url+"ToDoLists/"+list.id,list).toPromise();
   }
 
   deleteList(listId:number){
-    this.http.delete(this.url+"items?listId="+listId);
-    return this.http.delete(this.url+"lists/"+listId).toPromise();
+    this.http.delete(this.url+"ToDoItems?listId="+listId);
+    return this.http.delete(this.url+"ToDoLists/"+listId).toPromise();
   }
 
   checkItem(itemId:string){
-    return this.http.patch(this.url+"items/"+itemId,{"isComplited":true}).toPromise();
+    let patch = {isComplited:true};   
+    return this.http.patch(this.url+"ToDoItems/"+itemId,patch).toPromise();
   }
 
   countLists():Promise<number>{
-    return this.http.get<ToDoList[]>(this.url+"lists").pipe(
-      map(list => list.length)
+    return this.http.get<number>(this.url+"ToDoLists/count").pipe(
+      map(list => list)
     ).toPromise();
   }
 
   countItems():Promise<number>{
-    return this.http.get<ToDoItem[]>(this.url+"items").pipe(
-      map(item => item.length)
+    return this.http.get<number>(this.url+"ToDoItems/count").pipe(
+      map(item => item)
     ).toPromise();
     
   }
 
   countActiveItems():Promise<number>{
-    return this.http.get<ToDoItem[]>(this.url+"items").pipe(
-      map(item => item.filter(i => !i.isComplited)),
-      map(item => item.length)
+    return this.http.get<number>(this.url+"ToDoItems/count/active").pipe(
+      map(item => item)
     ).toPromise();
   }
 }

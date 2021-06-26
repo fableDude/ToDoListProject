@@ -4,6 +4,6 @@ export interface ToDoList{
     id:number;
     caption:string;
     description:string;
-    icon:string;
+    image:string;
     color:string;
 }

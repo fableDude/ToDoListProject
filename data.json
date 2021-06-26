@@ -2,18 +2,71 @@
   "lists": [
     {
       "id": 1,
-      "caption": "bbb",
-      "description": "a a aaaa aa aaa  aaa aaa aaaaa aaaa aaaaa ",
-      "icon": "work",
-      "color": "blue"
+      "caption": "asd",
+      "description": "asddsd asd sad asdsa d sadsad sadas asdsadsad d asd",
+      "image": "shopping_cart",
+      "color": "orange",
+      "items": null
+    },
+    {
+      "id": 4,
+      "caption": "asd",
+      "description": "asdasdasdasdasdasdas d a s da sd  a s ds   a",
+      "image": "flag",
+      "color": "blue",
+      "items": null
+    },
+    {
+      "id": 5,
+      "caption": "123123",
+      "description": "1 2 3 123 123 123 123 123 123132 132132",
+      "image": "stars",
+      "color": "steelblue",
+      "items": null
     }
   ],
   "items": [
     {
       "id": 1,
-      "isComplited": true,
+      "caption": "111 111 1111",
       "listId": 1,
-      "caption": "a a aaaaaaaaa"
+      "isCompleted": true,
+      "list": null
+    },
+    {
+      "id": 2,
+      "caption": "222 222 2222",
+      "listId": 4,
+      "isCompleted": true,
+      "list": null
+    },
+    {
+      "id": 3,
+      "caption": "asd asd  asddd",
+      "listId": 1,
+      "isCompleted": true,
+      "list": null
+    },
+    {
+      "id": 4,
+      "caption": "asd dasdfd dcvcv",
+      "listId": 1,
+      "isCompleted": true,
+      "list": null
+    },
+    {
+      "id": 5,
+      "caption": "123 123 123.",
+      "listId": 5,
+      "isCompleted": true,
+      "list": null
+    },
+    {
+      "id": 6,
+      "caption": "asd asd asdd",
+      "listId": 5,
+      "isCompleted": true,
+      "list": null
     }
   ]
 }

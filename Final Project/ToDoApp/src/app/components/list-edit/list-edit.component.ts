@@ -19,7 +19,7 @@ export class ListEditComponent implements OnInit {
   list$!:Observable<ToDoList>;
   listId$!:Observable<string>;
   list!:ToDoList;
-  icons: string[] =[
+  images: string[] =[
     "event",
     "work",
     "shopping_cart",
@@ -35,9 +35,9 @@ export class ListEditComponent implements OnInit {
     "steelblue",
     "brown"
   ];
-  selectedIcon = this.icons[0];
+  selectedimage = this.images[0];
   selectedColor = this.colors[0];
-  iconControl = new FormControl('',[Validators.required]);
+  imageControl = new FormControl('',[Validators.required]);
   colorControl = new FormControl('',[Validators.required]);
 
   constructor(
@@ -60,7 +60,7 @@ export class ListEditComponent implements OnInit {
     try {
       this.list = await this.list$.toPromise();
     } catch (error) {
-      this.list ={caption:"",icon:"",description:"",color:"",id:-1}
+      this.list ={caption:"",image:"",description:"",color:"",id:-1}
     }
     this.form.reset(this.list);
    
@@ -70,7 +70,7 @@ export class ListEditComponent implements OnInit {
     this.form=new FormGroup({
       caption: new FormControl('',[Validators.required]),
       description:new FormControl('',[Validators.required,wordValidators(10),letterValidator(30)]),
-      icon: this.iconControl,
+      image: this.imageControl,
       color:this.colorControl
     });
     
@@ -94,6 +94,11 @@ export class ListEditComponent implements OnInit {
     }      
     this.router.navigateByUrl("lists");
   }
+
+  // changeColor(){
+  //   var select = document.getElementsByClassName("red ng-untouched ng-pristine ng-valid");
+  //   select[0].className = this.colors[select[0].selected]
+  // }
 
   
 }

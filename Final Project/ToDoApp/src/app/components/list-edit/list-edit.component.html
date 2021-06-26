@@ -11,14 +11,14 @@
     </div>
 
     <div class="form-field">
-        <label  for="icon">Icon</label>
-        <mat-form-field appearance="fill"  *ngIf="get('icon') as field">
-            <mat-select [formControl]="iconControl" name="icon" [(value)]="selectedIcon">
+        <label  for="image">Icon</label>
+        <mat-form-field appearance="fill"  *ngIf="get('image') as field">
+            <mat-select [formControl]="imageControl" name="image" [(value)]="selectedimage">
                 <mat-select-trigger>
-                    <mat-icon>{{selectedIcon}}</mat-icon>
+                    <mat-icon>{{selectedimage}}</mat-icon>
                 </mat-select-trigger>
-                <mat-option *ngFor="let icon of icons" [value]="icon">
-                    <mat-icon>{{icon}}</mat-icon>
+                <mat-option *ngFor="let image of images" [value]="image">
+                    <mat-icon>{{image}}</mat-icon>
                 </mat-option>
             </mat-select>
         </mat-form-field>

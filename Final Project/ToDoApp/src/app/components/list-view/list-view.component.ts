@@ -81,7 +81,7 @@ export class ListViewComponent implements OnInit {
     let list = await this.list;
     let newItem:ToDoItem={
       id:0,
-      isComplited:false,
+      isCompleted:false,
       listId:Number(list.id.toString()),
       caption:this.newItemControl.value
     }
