@@ -25,7 +25,7 @@
     </div>
     <div class="form-field">
         <label  for="color">Color</label>
-        <select class="{{colors[0]}}" [formControl]="colorControl" onchange="this.className='form-field '+this.options[this.selectedIndex].className">
+        <select class="{{selectedColor}}" [formControl]="colorControl" onchange="this.className='form-field '+this.options[this.selectedIndex].className">
             <option disabled=true></option>
             <option class="{{color}}" *ngFor="let color of colors">{{color}}</option>
         </select>

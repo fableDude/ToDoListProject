@@ -59,6 +59,7 @@ export class ListEditComponent implements OnInit {
       );  
     try {
       this.list = await this.list$.toPromise();
+      this.selectedColor = this.list.color;
     } catch (error) {
       this.list ={caption:"",image:"",description:"",color:"",id:-1}
     }
