@@ -19,6 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { TodoItemPresenterComponent } from './components/todo-item-presenter/todo-item-presenter.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { ErrorPresenterComponent } from './components/error-presenter/error-presenter.component';
+import { AuthModule } from '@auth0/auth0-angular';
+import { AuthButtonComponent } from './components/auth-button/auth-button.component';
 
 
 
@@ -34,7 +36,8 @@ import { ErrorPresenterComponent } from './components/error-presenter/error-pres
     NavBarComponent,
     TodoItemPresenterComponent,
     ErrorPageComponent,
-    ErrorPresenterComponent
+    ErrorPresenterComponent,
+    AuthButtonComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,11 @@ import { ErrorPresenterComponent } from './components/error-presenter/error-pres
     MatIconModule,
     MatSelectModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AuthModule.forRoot({
+      domain: 'dev-pnc0rpii.us.auth0.com',
+      clientId: 'clMLQSh3nfPhEGx4BcGCCxeY4bEjsg4G'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
