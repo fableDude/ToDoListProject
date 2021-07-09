@@ -83,7 +83,8 @@ export class ListViewComponent implements OnInit {
       id:0,
       isCompleted:false,
       listId:Number(list.id.toString()),
-      caption:this.newItemControl.value
+      caption:this.newItemControl.value,
+      userId:""
     }
     await this.service.addNewItem(newItem);
     this.newItem$.next(newItem.listId)

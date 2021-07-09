@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatIcon } from '@angular/material/icon';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from '@auth0/auth0-angular';
+import { User } from '@auth0/auth0-spa-js';
 import { observable, Observable } from 'rxjs';
 import { filter, first, map, observeOn, switchMap } from 'rxjs/operators';
 import { ToDoList } from 'src/app/models/todo-list.model';
@@ -18,6 +20,8 @@ export class ListEditComponent implements OnInit {
   form!: FormGroup;
   list$!:Observable<ToDoList>;
   listId$!:Observable<string>;
+  userId$!: Observable<string|undefined>;
+  userId:string | undefined = "";
   list!:ToDoList;
   images: string[] =[
     "event",
@@ -42,6 +46,7 @@ export class ListEditComponent implements OnInit {
 
   constructor(
     private service:DataService,
+    private auth: AuthService,
     private router:Router,
     private route:ActivatedRoute
     ){}
@@ -53,15 +58,26 @@ export class ListEditComponent implements OnInit {
       first()
       );
 
+        
+    this.userId$ = this.auth.user$.pipe(
+      map(u => {if(typeof u?.email !== 'undefined')return u
+      return new User
+      }),
+      map(user =>user.email+""),
+      first()
+    );
+
+
     this.list$ = this.listId$.pipe(
       switchMap(id=> this.service.getListById(id)),
       first()
       );  
     try {
+      this.userId = await this.userId$.toPromise();
       this.list = await this.list$.toPromise();
       this.selectedColor = this.list.color;
     } catch (error) {
-      this.list ={caption:"",image:"",description:"",color:"",id:-1}
+      this.list ={caption:"",image:"",description:"",color:"",id:-1, userId: this.userId}
     }
     this.form.reset(this.list);
    
@@ -84,6 +100,7 @@ export class ListEditComponent implements OnInit {
   async onSave(){
     let newList : ToDoList = {
       "id":this.list.id,
+      "userId":this.userId, 
       ...this.form.value
     };
     if(this.list.id != -1){

@@ -6,4 +6,5 @@ export interface ToDoList{
     description:string;
     image:string;
     color:string;
+    userId:string|undefined;
 }

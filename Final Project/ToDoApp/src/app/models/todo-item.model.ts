@@ -3,4 +3,5 @@ export interface ToDoItem{
     caption:string;
     listId:number;
     isCompleted:boolean;
+    userId:string|undefined;
 }
