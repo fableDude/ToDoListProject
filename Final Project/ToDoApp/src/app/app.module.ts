@@ -15,11 +15,11 @@ import { ItemsViewComponent } from './components/items-view/items-view.component
 import { HomeComponent } from './components/home/home.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TodoItemPresenterComponent } from './components/todo-item-presenter/todo-item-presenter.component';
 import { ErrorPageComponent } from './components/error-page/error-page.component';
 import { ErrorPresenterComponent } from './components/error-presenter/error-presenter.component';
-import { AuthModule } from '@auth0/auth0-angular';
+import { AuthModule,AuthHttpInterceptor  } from '@auth0/auth0-angular';
 import { AuthButtonComponent } from './components/auth-button/auth-button.component';
 
 
@@ -52,10 +52,33 @@ import { AuthButtonComponent } from './components/auth-button/auth-button.compon
     HttpClientModule,
     AuthModule.forRoot({
       domain: 'dev-pnc0rpii.us.auth0.com',
-      clientId: 'clMLQSh3nfPhEGx4BcGCCxeY4bEjsg4G'
+      clientId: 'clMLQSh3nfPhEGx4BcGCCxeY4bEjsg4G',
+      audience: 'http://localhost:5000/',
+      scope: 'read:current_user',
+      httpInterceptor: {
+        allowedList: [
+          {
+            // Match any request that starts 'https://dev-pnc0rpii.us.auth0.com/api/v2/' (note the asterisk)
+            uri: 'http://localhost:5000/*',
+            tokenOptions: {
+              // The attached token should target this audience
+              audience: 'http://localhost:5000/',
+    
+              // The attached token should have these scopes
+              scope: 'read:current_user'
+            }
+          }
+        ]
+      }
     })
   ],
-  providers: [],
+  providers: [
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthHttpInterceptor,
+    multi: true,
+  },
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

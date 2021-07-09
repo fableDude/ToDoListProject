@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { filter, map, switchMap } from 'rxjs/operators';
+import { AuthService } from '@auth0/auth0-angular';
+import { concatMap, filter, map, switchMap } from 'rxjs/operators';
 import { ToDoItem } from '../models/todo-item.model';
 import { ToDoList } from '../models/todo-list.model';
 
@@ -10,7 +11,7 @@ import { ToDoList } from '../models/todo-list.model';
 export class DataService {
   url ="http://localhost:5000/"
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient , public auth: AuthService) { }
   getListById(id:string){
       return this.http.get<ToDoList>(this.url+"ToDoLists/"+id).toPromise();
   }
@@ -62,6 +63,10 @@ export class DataService {
     return this.http.get<number>(this.url+"ToDoItems/count").pipe(
       map(item => item)
     ).toPromise();
+    // return this.auth.user$.pipe(
+    //   concatMap(user => this.http.get<number>(encodeURI(this.url+"ToDoItems/count/"+user?.sub)))
+    // ).toPromise();
+
     
   }
 
